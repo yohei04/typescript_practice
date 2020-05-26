@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import { TextField } from './TextField';
 
 const App: React.FC = () => {
   return (
     <div>
-      yo
+      <TextField text='hello' person={{ firstName: 'test', lastName: '' }} />
     </div>
   )
 }
