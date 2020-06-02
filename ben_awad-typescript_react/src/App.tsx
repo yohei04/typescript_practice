@@ -1,19 +1,13 @@
-import React from 'react';
-import './App.css';
-// import { TextField } from './TextField';
-import Child from './components/Child'
-
-
-
+import React from "react";
+import "./App.css";
+import TextField from "./TextField";
 
 const App: React.FC = () => {
   return (
     <div>
-      <Child />
+      <TextField text="text" person={{ firstName: "", lastName: "" }} />
     </div>
-  )
-}
+  );
+};
 
-export default App
-
-
+export default App;
