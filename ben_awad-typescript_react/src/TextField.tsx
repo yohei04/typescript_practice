@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface Person {
   firstName: string;
@@ -13,7 +13,14 @@ interface Props {
   person: Person;
 }
 
+interface TextNode {
+  text: string;
+}
+
 const TextField: React.FC<Props> = () => {
+  const [count, setCount] = useState<TextNode>({text: "hello"});
+  setCount({test});
+
   return (
     <div>
       <input type="text" name="" id="" />
