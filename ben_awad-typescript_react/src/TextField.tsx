@@ -19,7 +19,7 @@ interface TextNode {
 
 const TextField: React.FC<Props> = () => {
   const [count, setCount] = useState<TextNode>({text: "hello"});
-  setCount({test});
+
 
   return (
     <div>
