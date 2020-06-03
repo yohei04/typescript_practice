@@ -1,19 +1,18 @@
 import React from "react";
 import "./App.css";
-import TextField from "./TextField";
-import { Counter } from "./components/Counter";
+
+type FormElem = React.FormEvent<HTMLFormElement>
 
 const App: React.FC = () => {
+  const items: string[] = [
+    "test1", "test2", "test3" 
+  ]
+
   return (
     <div>
-      <Counter>
-        {(count, setCount) => (
-          <div>
-            {count}
-            <button onClick={() => setCount(count + 1)}>+</button>
-          </div>
-        )}
-      </Counter>
+      {items.map((item, i) => (
+        <li key={i}> {item} </li>
+      ))}
     </div>
   );
 };
