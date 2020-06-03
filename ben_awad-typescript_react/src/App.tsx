@@ -1,13 +1,18 @@
-import React, { Children } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Child from "./components/Child";
 
 const App: React.FC = () => {
+  const [message, setMessage] = useState<string>('')
+  
+ const handleMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    return setMessage(e.target.value);
+  }
+
+
   return (
     <div>
-      <Child message="子コンポーネントに渡す">
-        <h1> ちるどれん</h1>
-      </Child>
+      <h1>{message}</h1>
+      <input type="text" value={message} onChange={handleMessage} />
     </div>
   );
 };

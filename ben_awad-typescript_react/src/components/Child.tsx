@@ -8,8 +8,6 @@ type Props = {
 const Child: React.FC<Props> = ({ children, message }) => {
   return (
     <div>
-      {children}
-      <p>{message}</p>
     </div>
   );
 };
