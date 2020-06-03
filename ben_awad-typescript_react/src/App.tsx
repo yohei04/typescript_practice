@@ -1,17 +1,34 @@
 import React from "react";
 import "./App.css";
 
-type FormElem = React.FormEvent<HTMLFormElement>
+type Item = {
+  id: number;
+  title: string;
+};
 
 const App: React.FC = () => {
-  const items: string[] = [
-    "test1", "test2", "test3" 
-  ]
+  const items: Item[] = [
+    {
+      id: 1,
+      title: "item1",
+    },
+    {
+      id: 2,
+      title: "item2",
+    },
+    {
+      id: 3,
+      title: "item3",
+    },
+  ];
 
   return (
     <div>
-      {items.map((item, i) => (
-        <li key={i}> {item} </li>
+      {items.map((item) => (
+        <li key={item.id}>
+          {" "}
+          {item.id} - {item.title}{" "}
+        </li>
       ))}
     </div>
   );
