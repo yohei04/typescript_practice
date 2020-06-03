@@ -1,14 +1,32 @@
 import React, { useState } from "react";
 import "./App.css";
 
+type FormElem = React.MouseEvent<HTMLFormElement, MouseEvent>;
+
+interface ITodo {
+  text: string;
+  complete: boolean;
+}
+
 const App: React.FC = () => {
   const [value, setValue] = useState<string>("");
+  const [todos, setTodos] = useState<ITodo[]>([]);
 
-  const handleSubmit = (
-    e: React.MouseEvent<HTMLFormElement, MouseEvent>
-  ): void => {
+  const handleSubmit = (e: FormElem): void => {
     e.preventDefault();
+    addTodo(value);
     setValue("");
+  };
+
+  const addTodo = (text: string): void => {
+    const newTodo: ITodo[] = [...todos, { text, complete: false }];
+    setTodos(newTodo);
+  };
+
+  const completeTodo = (index: number): void => {
+    const newTodos: ITodo[] = todos;
+    newTodos[index].complete = !newTodos[index].complete;
+    setTodos(newTodos);
   };
 
   return (
@@ -22,6 +40,16 @@ const App: React.FC = () => {
         />
         <button type="submit">Add Todo</button>
       </form>
+      <section>
+        {todos.map((todo: ITodo, index: number) => (
+          <div key={index}>
+            <p>{todo.text}</p>
+            <button type="button" onClick={() => completeTodo(index)}>
+              {todo.complete ? "Incomplete" : "complete"}
+            </button>
+          </div>
+        ))}
+      </section>
     </>
   );
 };
