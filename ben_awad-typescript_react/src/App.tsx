@@ -31,8 +31,9 @@ const App: React.FC = () => {
 
   const deleteTodo = (index: number): void => {
     const newTodos: ITodo[] = [...todos];
-    
-  }
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
 
   return (
     <>
@@ -54,7 +55,9 @@ const App: React.FC = () => {
             <button type="button" onClick={() => completeTodo(index)}>
               {todo.complete ? "Incomplete" : "complete"}
             </button>
-            <button>delete</button>
+            <button type="button" onClick={() => deleteTodo(index)}>
+              delete
+            </button>
           </div>
         ))}
       </section>
