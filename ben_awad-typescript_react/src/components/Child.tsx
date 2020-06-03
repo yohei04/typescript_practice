@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const Child: React.FC = () => {
+type Props = {
+  message: string;
+  children: React.ReactNode;
+};
+
+const Child: React.FC<Props> = ({ children, message }) => {
   return (
-    <div>子コンポーネント</div>
-  )
-}
+    <div>
+      {children}
+      <p>{message}</p>
+    </div>
+  );
+};
 
-export default Child
+export default Child;

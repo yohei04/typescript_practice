@@ -1,35 +1,13 @@
-import React from "react";
+import React, { Children } from "react";
 import "./App.css";
-
-type Item = {
-  id: number;
-  title: string;
-};
+import Child from "./components/Child";
 
 const App: React.FC = () => {
-  const items: Item[] = [
-    {
-      id: 1,
-      title: "item1",
-    },
-    {
-      id: 2,
-      title: "item2",
-    },
-    {
-      id: 3,
-      title: "item3",
-    },
-  ];
-
   return (
     <div>
-      {items.map((item) => (
-        <li key={item.id}>
-          {" "}
-          {item.id} - {item.title}{" "}
-        </li>
-      ))}
+      <Child message="子コンポーネントに渡す">
+        <h1> ちるどれん</h1>
+      </Child>
     </div>
   );
 };
