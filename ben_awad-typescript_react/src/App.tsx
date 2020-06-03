@@ -1,18 +1,24 @@
 import React, { useState } from "react";
+import styled from 'styled-components'
 import "./App.css";
 
-const App: React.FC = () => {
-  const [message, setMessage] = useState<string>('')
-  
- const handleMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return setMessage(e.target.value);
-  }
+const Title = styled.h1`
+  color: green;
+  background: blue
+`
 
+const App: React.FC = () => {
+
+  const [blue, setBlue] = useState<boolean>(false)
+
+  const changeColor = () => {
+    return setBlue(!blue);
+  }
 
   return (
     <div>
-      <h1>{message}</h1>
-      <input type="text" value={message} onChange={handleMessage} />
+      <Title>Reactスタイル</Title>
+      <button onClick={changeColor}>color change</button>
     </div>
   );
 };
