@@ -15,3 +15,9 @@ export interface IEpisode {
   number: number;
   season: number;
 }
+
+export interface IEpisodeProps {
+  episodes: Array<IEpisode>;
+  toggleFavAction: (episode: IEpisode) => IAction;
+  favorites: Array<IEpisode>;
+}

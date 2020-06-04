@@ -1,53 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Store } from './Udemy/redux/store';
-import { IAction, IEpisode } from './Udemy/interfaces';
+import { Link } from '@reach/router';
 
-const EpisodeList = React.lazy<any>(() => import('./Udemy/components/EpisodeList'));
-
-const App = () => {
-  const { state, dispatch } = React.useContext(Store);
-
-  useEffect(() => {
-    state.episodes.length === 0 && fetchDataAction();
-  });
-
-  const fetchDataAction = async () => {
-    const URL =
-      'https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes';
-    const data = await fetch(URL);
-    const dataJSON = await data.json();
-    return dispatch({
-      type: 'FETCH_DATA',
-      payload: dataJSON._embedded.episodes,
-    });
-  };
-
-  const toggleFavAction = (episode: IEpisode): IAction => {
-    const episodeInFav = state.favorites.includes(episode);
-    let dispatchObj = {
-      type: 'ADD_FAV',
-      payload: episode,
-    };
-    if (episodeInFav) {
-      const favWithoutEpisode = state.favorites.filter(
-        (fav: IEpisode) => fav.id !== episode.id
-      );
-      dispatchObj = {
-        type: 'REMOVE_FAV',
-        payload: favWithoutEpisode,
-      };
-    }
-
-    return dispatch(dispatchObj);
-  };
-
-  const props = {
-    episodes: state.episodes,
-    toggleFavAction,
-    favorites: state.favorites,
-  };
-
-  console.log(state);
+const App = (props: any) => {
+  const { state } = React.useContext(Store);
 
   return (
     <div>
@@ -56,13 +12,12 @@ const App = () => {
           <h1>Rick and Morty</h1>
           <p>Pick your favorite episodes</p>
         </div>
-        <div>Favorite(s): {state.favorites.length}</div>
+        <div>
+          <Link to="/">Home</Link>
+          <Link to="/faves">Favorite(s): {state.favorites.length}</Link>
+        </div>
       </header>
-      <React.Suspense fallback={<div>loading...</div>}>
-        <section className="episode-layout">
-          <EpisodeList {...props} />
-        </section>
-      </React.Suspense>
+      {props.children}
     </div>
   );
 };

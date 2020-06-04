@@ -1,18 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import React, { JSXElementConstructor } from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-import { StoreProvider } from "./Udemy/redux/store";
+import { StoreProvider } from './Udemy/redux/store';
+import { Router, RouteComponentProps } from '@reach/router';
+import HomePage from './Udemy/components/HomePage';
+import FavPage from './Udemy/components/FavPage';
+
+const RouterPage = (props: {pageComponent: JSX.Element} & RouteComponentProps) => props.pageComponent
 
 ReactDOM.render(
   <StoreProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <Router>
+      <App path="/">
+        <RouterPage pageComponent={<HomePage />} path="/" />
+        <RouterPage pageComponent={<FavPage />} path="/faves" />
+      </App>
+    </Router>
   </StoreProvider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
