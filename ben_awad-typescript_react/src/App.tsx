@@ -1,13 +1,6 @@
 import React, { useEffect } from 'react';
 import { Store } from './Udemy/redux/store';
-
-interface IEpisode {
-  id: number;
-  image: { medium: string; original: string };
-  name: string;
-  number: number;
-  season: number;
-}
+import { IAction, IEpisode } from './Udemy/interfaces';
 
 const App = () => {
   const { state, dispatch } = React.useContext(Store);
@@ -27,6 +20,14 @@ const App = () => {
     });
   };
 
+  const toggleFavAction = (episode: IEpisode): IAction =>
+    dispatch({
+      type: 'ADD_FAV',
+      payload: episode,
+    });
+  
+  console.log(state)
+
   return (
     <div>
       <header className="header">
@@ -43,7 +44,12 @@ const App = () => {
               />
               <div>{episode.name}</div>
               <section>
-                Season: {episode.season} Number: {episode.number}
+                <div>
+                  Season: {episode.season} Number: {episode.number}
+                </div>
+                <button type="button" onClick={() => toggleFavAction(episode)}>
+                  Fav
+                </button>
               </section>
             </section>
           );
