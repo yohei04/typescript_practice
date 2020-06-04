@@ -20,19 +20,34 @@ const App = () => {
     });
   };
 
-  const toggleFavAction = (episode: IEpisode): IAction =>
-    dispatch({
+  const toggleFavAction = (episode: IEpisode): IAction => {
+    const episodeInFav = state.favorites.includes(episode);
+    let dispatchObj = {
       type: 'ADD_FAV',
       payload: episode,
-    });
-  
-  console.log(state)
+    };
+    if (episodeInFav) {
+      const favWithoutEpisode = state.favorites.filter(
+        (fav: IEpisode) => fav.id !== episode.id
+      );
+      dispatchObj = {
+        type: 'REMOVE_FAV',
+        payload: favWithoutEpisode,
+      };
+    }
+    return dispatch(dispatchObj);
+  };
+
+  console.log(state);
 
   return (
     <div>
       <header className="header">
-        <h1>Rick and Morty</h1>
-        <p>Pick your favorite episodes</p>
+        <div>
+          <h1>Rick and Morty</h1>
+          <p>Pick your favorite episodes</p>
+        </div>
+        <div>Favorite(s): {state.favorites.length}</div>
       </header>
       <section className="episode-layout">
         {state.episodes.map((episode: IEpisode) => {
@@ -48,7 +63,11 @@ const App = () => {
                   Season: {episode.season} Number: {episode.number}
                 </div>
                 <button type="button" onClick={() => toggleFavAction(episode)}>
-                  Fav
+                  {state.favorites.find(
+                    (fav: IEpisode) => fav.id === episode.id
+                  )
+                    ? 'Unfav'
+                    : 'Fav'}
                 </button>
               </section>
             </section>

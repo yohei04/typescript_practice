@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 export interface IState {
   episodes: Array<IEpisode>;
   favorites: Array<any>;
