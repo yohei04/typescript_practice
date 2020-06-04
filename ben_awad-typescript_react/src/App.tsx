@@ -1,19 +1,18 @@
-
-import React from 'react'
+import React from "react";
+import { Store } from "./Udemy/redux/store";
 
 const App = () => {
+  const store = React.useContext(Store);
+
   return (
     <div>
+      {console.log(store)}
       <h1>test</h1>
     </div>
-  )
-}
+  );
+};
 
-export default App
-
-
-
-
+export default App;
 
 
 
@@ -87,9 +86,6 @@ export default App
 // };
 
 // export default App;
-
-
-
 
 // WEBOTV
 
