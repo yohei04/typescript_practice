@@ -1,19 +1,31 @@
 import React from "react";
 
-interface IStore {
-  episodes: [],
-  favorites: []
+interface IState {
+  episodes: [];
+  favorites: [];
 }
 
-const initialState: IStore = {
+interface IAction {
+  type: string;
+  payload: any;
+}
+
+const initialState: IState = {
   episodes: [],
-  favorites: []
+  favorites: [],
 };
 
-export const Store = React.createContext<IStore>(initialState);
+export const Store = React.createContext<IState>(initialState);
 
-
-function reducer() {}
+function reducer(store: IState, action: IAction): IState {
+  switch (action.type) {
+    case "FETCH_DATA":
+      return {
+        ...state,
+        episodes: action.payload,
+      };
+  }
+}
 
 export function StoreProvider(props: any): JSX.Element {
   return (
