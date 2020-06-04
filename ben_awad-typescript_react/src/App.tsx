@@ -1,28 +1,41 @@
 import React from 'react';
-import { Store } from './Udemy/redux/store';
-import { Link } from '@reach/router';
 
-const App = (props: any) => {
-  const { state } = React.useContext(Store);
-
+const App = () => {
   return (
-    <div>
-      <header className="header">
-        <div>
-          <h1>Rick and Morty</h1>
-          <p>Pick your favorite episodes</p>
-        </div>
-        <div>
-          <Link to="/">Home</Link>
-          <Link to="/faves">Favorite(s): {state.favorites.length}</Link>
-        </div>
-      </header>
-      {props.children}
+    <div className="App">
+      
     </div>
   );
 };
 
 export default App;
+
+// Udemy movies
+
+// import { Store } from './Udemy/redux/store';
+// import { Link } from '@reach/router';
+
+// const App = (props: any) => {
+//   const { state } = React.useContext(Store);
+
+//   return (
+//     <div>
+//       <header className="header">
+//         <div>
+//           <h1>Rick and Morty</h1>
+//           <p>Pick your favorite episodes</p>
+//         </div>
+//         <div>
+//           <Link to="/">Home</Link>
+//           <Link to="/faves">Favorite(s): {state.favorites.length}</Link>
+//         </div>
+//       </header>
+//       {props.children}
+//     </div>
+//   );
+// };
+
+// export default App;
 
 // Udemy Todo
 
