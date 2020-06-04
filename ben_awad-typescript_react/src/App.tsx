@@ -1,36 +1,59 @@
-import React, {useEffect} from "react";
-import { Store } from "./Udemy/redux/store";
+import React, { useEffect } from 'react';
+import { Store } from './Udemy/redux/store';
+
+interface IEpisode {
+  id: number;
+  image: { medium: string; original: string };
+  name: string;
+  number: number;
+  season: number;
+}
 
 const App = () => {
   const { state, dispatch } = React.useContext(Store);
 
   useEffect(() => {
-    state.episodes.length === 0 && fetchDataAction()
-  })
-  
+    state.episodes.length === 0 && fetchDataAction();
+  });
+
   const fetchDataAction = async () => {
     const URL =
-      "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
-    const data = await fetch(URL)
+      'https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes';
+    const data = await fetch(URL);
     const dataJSON = await data.json();
     return dispatch({
       type: 'FETCH_DATA',
-      payload: dataJSON
-    })
-  }
-
-  console.log(state)
+      payload: dataJSON._embedded.episodes,
+    });
+  };
 
   return (
     <div>
-      <h1>test</h1>
+      <header className="header">
+        <h1>Rick and Morty</h1>
+        <p>Pick your favorite episodes</p>
+      </header>
+      <section className="episode-layout">
+        {state.episodes.map((episode: IEpisode) => {
+          return (
+            <section key={episode.id} className="episode-box">
+              <img
+                src={episode.image.medium}
+                alt={`Rick adn Mort ${episode.name}`}
+              />
+              <div>{episode.name}</div>
+              <section>
+                Season: {episode.season} Number: {episode.number}
+              </section>
+            </section>
+          );
+        })}
+      </section>
     </div>
   );
 };
 
 export default App;
-
-
 
 // Udemy Todo
 
