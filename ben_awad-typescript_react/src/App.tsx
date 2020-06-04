@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Store } from './Udemy/redux/store';
 import { IAction, IEpisode } from './Udemy/interfaces';
 
+const EpisodeList = React.lazy<any>(() => import('./Udemy/components/EpisodeList'));
+
 const App = () => {
   const { state, dispatch } = React.useContext(Store);
 
@@ -35,7 +37,14 @@ const App = () => {
         payload: favWithoutEpisode,
       };
     }
+
     return dispatch(dispatchObj);
+  };
+
+  const props = {
+    episodes: state.episodes,
+    toggleFavAction,
+    favorites: state.favorites,
   };
 
   console.log(state);
@@ -49,31 +58,11 @@ const App = () => {
         </div>
         <div>Favorite(s): {state.favorites.length}</div>
       </header>
-      <section className="episode-layout">
-        {state.episodes.map((episode: IEpisode) => {
-          return (
-            <section key={episode.id} className="episode-box">
-              <img
-                src={episode.image.medium}
-                alt={`Rick adn Mort ${episode.name}`}
-              />
-              <div>{episode.name}</div>
-              <section>
-                <div>
-                  Season: {episode.season} Number: {episode.number}
-                </div>
-                <button type="button" onClick={() => toggleFavAction(episode)}>
-                  {state.favorites.find(
-                    (fav: IEpisode) => fav.id === episode.id
-                  )
-                    ? 'Unfav'
-                    : 'Fav'}
-                </button>
-              </section>
-            </section>
-          );
-        })}
-      </section>
+      <React.Suspense fallback={<div>loading...</div>}>
+        <section className="episode-layout">
+          <EpisodeList {...props} />
+        </section>
+      </React.Suspense>
     </div>
   );
 };
