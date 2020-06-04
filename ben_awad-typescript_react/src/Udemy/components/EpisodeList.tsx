@@ -2,7 +2,7 @@ import React from 'react';
 import { IEpisode } from '../interfaces';
 
 const EpisodeList = (props: any): React.FC => {
-  const { episodes, toggleFavAction, favorites } = props;
+  const { episodes, toggleFavAction, favorites, state } = props;
   return episodes.map((episode: IEpisode) => {
     return (
       <section key={episode.id} className="episode-box">
