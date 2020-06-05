@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import TodoInput from './Todo-practice/components/TodoInput';
+import {TodoInput, TodoList} from './Todo-practice/components';
 import { ITodo } from './Todo-practice/interfaces';
 
 const initialState: ITodo[] = [
@@ -16,6 +16,7 @@ const App: React.FC = () => {
     <div className="App">
       <div className="todo-items">
         <TodoInput initialState={initialState} />
+        <TodoList initialState={initialState} />
         {/* <p>task1</p>
         <p>task2</p>
         <p>task3</p> */}

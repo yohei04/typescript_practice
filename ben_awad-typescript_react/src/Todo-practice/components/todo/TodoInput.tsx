@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ITodo } from '../interfaces';
+import { ITodo } from '../../interfaces';
 
 interface TodoInputProps {
   initialState: ITodo[];
