@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
+import TodoInput from './Todo-practice/components/TodoInput';
+import { ITodo } from './Todo-practice/interfaces';
 
-const App = () => {
+const initialState: ITodo[] = [
+  { id: 1, text: 'test1', complete: false },
+  { id: 2, text: 'test2', complete: true },
+  { id: 3, text: 'test3', complete: false },
+];
+
+const App: React.FC = () => {
+  
+  // const [test, setTest] = useState('')
+
   return (
     <div className="App">
-      
+      <div className="todo-items">
+        <TodoInput initialState={initialState} />
+        {/* <p>task1</p>
+        <p>task2</p>
+        <p>task3</p> */}
+      </div>
     </div>
   );
 };
