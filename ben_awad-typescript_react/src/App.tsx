@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
-import {TodoInput, TodoList} from './Todo-practice/components';
+import React, { useState } from 'react';
+import { TodoInput, TodoList, Test } from './Todo-practice/components';
 import { ITodo } from './Todo-practice/interfaces';
+import { Provider } from 'react-redux';
+import store from './Todo-practice/redux/store';
 
 const initialState: ITodo[] = [
   { id: 1, text: 'test1', complete: false },
@@ -9,19 +11,18 @@ const initialState: ITodo[] = [
 ];
 
 const App: React.FC = () => {
-  
   // const [test, setTest] = useState('')
 
   return (
-    <div className="App">
-      <div className="todo-items">
-        <TodoInput initialState={initialState} />
-        <TodoList initialState={initialState} />
-        {/* <p>task1</p>
-        <p>task2</p>
-        <p>task3</p> */}
+    <Provider store={store}>
+      <div className="App">
+        <div className="todo-items">
+          <Test />
+          {/* <TodoInput initialState={initialState} />
+        <TodoList initialState={initialState} /> */}
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 };
 
