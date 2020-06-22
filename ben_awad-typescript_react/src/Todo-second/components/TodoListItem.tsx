@@ -6,10 +6,7 @@ interface TodoListItemProps {
   toggleTodo: ToggleTodo;
 }
 
-export const TodoListItem: React.FC<TodoListItemProps> = ({
-  todo,
-  toggleTodo,
-}) => {
+const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo }) => {
   return (
     <li>
       <label className={todo.complete ? 'complete' : undefined}>
@@ -23,3 +20,5 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({
     </li>
   );
 };
+
+export default TodoListItem;
