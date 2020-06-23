@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoItem from './TodoItem';
 
 interface TodoListProps {
   items: Array<Item>;
@@ -9,15 +10,7 @@ const TodoList: React.FC<TodoListProps> = ({ items, toggleItem }) => {
   return (
     <ul>
       {items.map((item) => (
-        <li key={item.key}>
-          <label
-            className="panel-block"
-            style={{ color: item.done ? 'darkgrey' : 'black' }}
-          >
-            <input type="checkbox" onClick={() => toggleItem(item)} />
-            {item.text}
-          </label>
-        </li>
+        <TodoItem item={item} toggleItem={toggleItem} />
       ))}
     </ul>
   );

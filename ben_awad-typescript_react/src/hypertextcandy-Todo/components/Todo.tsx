@@ -22,15 +22,14 @@ const Todo: React.FC = () => {
       }
       return item;
     });
-    setItems(newItems)
+    setItems(newItems);
   };
-
 
   return (
     <div className="panel">
       <div className="panel-heading">⚛️ React ToDo</div>
       <TodoList items={items} toggleItem={toggleItem} />
-      
+
       <div className="panel-block">{items.length} items</div>
     </div>
   );
