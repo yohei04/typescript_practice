@@ -4,4 +4,6 @@ type Item = {
   done: boolean;
 };
 
-type ToggleItem = (selectedItem) => void
+type ToggleItem = (selectedItem) => void;
+
+type AddItem = (text: string) => void;

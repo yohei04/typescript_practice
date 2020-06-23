@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoList from './TodoList';
+import Input from './Input';
 
 const getKey = () => Math.random().toString(32).substring(2);
 
@@ -25,9 +26,15 @@ const Todo: React.FC = () => {
     setItems(newItems);
   };
 
+  const addItem: AddItem = (text) => {
+    text.trim() !== '' &&
+      setItems([...items, { key: getKey(), text: text, done: false }]);
+  };
+
   return (
     <div className="panel">
       <div className="panel-heading">⚛️ React ToDo</div>
+      <Input addItem={addItem} />
       <TodoList items={items} toggleItem={toggleItem} />
 
       <div className="panel-block">{items.length} items</div>
