@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import './Todo.css';
 import TodoList from './TodoList';
 import Input from './Input';
+import Filter from './Filter';
 
 const getKey = () => Math.random().toString(32).substring(2);
 
@@ -12,6 +14,7 @@ const initialState: Array<Item> = [
 
 const Todo: React.FC = () => {
   const [items, setItems] = useState(initialState);
+  const [filter, setFilter] = useState('ALL');
 
   const toggleItem: ToggleItem = (selectedItem) => {
     const newItems = items.map((item) => {
@@ -31,13 +34,21 @@ const Todo: React.FC = () => {
       setItems([...items, { key: getKey(), text: text, done: false }]);
   };
 
+  const handleFilterChange: HandleFilterChange = (value) => setFilter(value);
+
+  const displayItems: Array<Item> = items.filter((item) => {
+    if (filter === 'ALL') return true;
+    if (filter === 'TODO') return !item.done;
+    if (filter === 'DONE') return item.done;
+  });
+
   return (
     <div className="panel">
       <div className="panel-heading">⚛️ React ToDo</div>
       <Input addItem={addItem} />
-      <TodoList items={items} toggleItem={toggleItem} />
-
-      <div className="panel-block">{items.length} items</div>
+      <Filter handleFilterChange={handleFilterChange} />
+      <TodoList toggleItem={toggleItem} displayItems={displayItems} />
+      <div className="panel-block">{displayItems.length} items</div>
     </div>
   );
 };

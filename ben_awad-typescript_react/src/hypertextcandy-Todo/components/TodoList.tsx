@@ -2,14 +2,14 @@ import React from 'react';
 import TodoItem from './TodoItem';
 
 interface TodoListProps {
-  items: Array<Item>;
   toggleItem: ToggleItem;
+  displayItems: Array<Item>;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ items, toggleItem }) => {
+const TodoList: React.FC<TodoListProps> = ({ toggleItem, displayItems }) => {
   return (
     <ul>
-      {items.map((item) => (
+      {displayItems.map((item) => (
         <TodoItem item={item} toggleItem={toggleItem} />
       ))}
     </ul>

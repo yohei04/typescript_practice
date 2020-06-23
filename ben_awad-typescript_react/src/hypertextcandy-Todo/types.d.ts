@@ -7,3 +7,5 @@ type Item = {
 type ToggleItem = (selectedItem) => void;
 
 type AddItem = (text: string) => void;
+
+type HandleFilterChange = (value: string) => void;
