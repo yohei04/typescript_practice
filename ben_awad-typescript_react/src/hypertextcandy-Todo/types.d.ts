@@ -3,3 +3,5 @@ type Item = {
   text: string;
   done: boolean;
 };
+
+type ToggleItem = (selectedItem) => void
