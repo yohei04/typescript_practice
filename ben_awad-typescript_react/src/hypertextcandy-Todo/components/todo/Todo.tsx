@@ -6,7 +6,7 @@ import Filter from './Filter';
 
 const getKey = () => Math.random().toString(32).substring(2);
 
-const initialState: Array<Item> = [
+const initialState: Item[] = [
   { key: getKey(), text: 'Learn JavaScript', done: false },
   { key: getKey(), text: 'Learn React', done: false },
   { key: getKey(), text: 'Get some good sleep', done: false },
@@ -19,10 +19,7 @@ const Todo: React.FC = () => {
   const toggleItem: ToggleItem = (selectedItem) => {
     const newItems = items.map((item) => {
       if (item.key === selectedItem.key) {
-        return {
-          ...item,
-          done: !item.done,
-        };
+        item.done = !item.done;
       }
       return item;
     });
@@ -36,13 +33,6 @@ const Todo: React.FC = () => {
 
   const handleFilterChange: HandleFilterChange = (value) => setFilter(value);
 
-  const displayItems: Array<Item> = items.filter((item) => {
-    if (filter === 'ALL') return true;
-    if (filter === 'TODO') return !item.done;
-    if (filter === 'DONE') return item.done;
-    return false;
-  });
-
   return (
     <div className="panel">
       <div className="panel-heading">
@@ -53,8 +43,7 @@ const Todo: React.FC = () => {
       </div>
       <Input addItem={addItem} />
       <Filter handleFilterChange={handleFilterChange} filter={filter} />
-      <TodoList toggleItem={toggleItem} displayItems={displayItems} />
-      <div className="panel-block">{displayItems.length} items</div>
+      <TodoList items={items} toggleItem={toggleItem} filter={filter} />
     </div>
   );
 };

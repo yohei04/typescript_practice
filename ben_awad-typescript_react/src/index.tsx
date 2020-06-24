@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './hypertextcandy-Todo/components/Todo';
+import App from './hypertextcandy-Todo/components/todo/Todo';
 
 
 ReactDOM.render(
