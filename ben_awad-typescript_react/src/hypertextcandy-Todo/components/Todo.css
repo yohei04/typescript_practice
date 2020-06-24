@@ -7,13 +7,13 @@
   margin: 1rem;
 }
 
-.logo{
-  margin-right: .6rem;
+.logo {
+  margin-right: 0.6rem;
 }
 
 .filter {
   margin-top: 1rem;
-  background: lightsalmon;
+  background: lightgray;
   display: inline-block;
 }
 
@@ -23,4 +23,8 @@ span {
 
 ul {
   padding: 0;
+}
+
+.active {
+  background: lightsalmon;
 }

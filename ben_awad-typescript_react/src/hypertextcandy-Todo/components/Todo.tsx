@@ -46,13 +46,13 @@ const Todo: React.FC = () => {
   return (
     <div className="panel">
       <div className="panel-heading">
-        <span className='logo' role="img" aria-label="reactLogo">
+        <span className="logo" role="img" aria-label="reactLogo">
           ⚛️
         </span>
         React ToDo
       </div>
       <Input addItem={addItem} />
-      <Filter handleFilterChange={handleFilterChange} />
+      <Filter handleFilterChange={handleFilterChange} filter={filter} />
       <TodoList toggleItem={toggleItem} displayItems={displayItems} />
       <div className="panel-block">{displayItems.length} items</div>
     </div>
