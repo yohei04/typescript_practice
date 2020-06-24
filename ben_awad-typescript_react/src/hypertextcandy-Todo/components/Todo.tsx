@@ -40,11 +40,17 @@ const Todo: React.FC = () => {
     if (filter === 'ALL') return true;
     if (filter === 'TODO') return !item.done;
     if (filter === 'DONE') return item.done;
+    return false;
   });
 
   return (
     <div className="panel">
-      <div className="panel-heading">⚛️ React ToDo</div>
+      <div className="panel-heading">
+        <span className='logo' role="img" aria-label="reactLogo">
+          ⚛️
+        </span>
+        React ToDo
+      </div>
       <Input addItem={addItem} />
       <Filter handleFilterChange={handleFilterChange} />
       <TodoList toggleItem={toggleItem} displayItems={displayItems} />

@@ -1,7 +1,26 @@
+.panel {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.panel-heading {
+  margin: 1rem;
+}
+
+.logo{
+  margin-right: .6rem;
+}
+
 .filter {
+  margin-top: 1rem;
   background: lightsalmon;
+  display: inline-block;
 }
 
 span {
   margin: 1rem;
+}
+
+ul {
+  padding: 0;
 }

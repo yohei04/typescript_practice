@@ -10,7 +10,7 @@ const TodoList: React.FC<TodoListProps> = ({ toggleItem, displayItems }) => {
   return (
     <ul>
       {displayItems.map((item) => (
-        <TodoItem item={item} toggleItem={toggleItem} />
+        <TodoItem key={item.key} item={item} toggleItem={toggleItem} />
       ))}
     </ul>
   );

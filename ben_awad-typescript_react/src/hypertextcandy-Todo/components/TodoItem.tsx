@@ -7,12 +7,16 @@ interface TodoItemProps {
 
 const TodoItem: React.FC<TodoItemProps> = ({ item, toggleItem }) => {
   return (
-    <li key={item.key} style={{ listStyle: 'none' }}>
+    <li style={{ listStyle: 'none' }}>
       <label
         className="panel-block"
         style={{ color: item.done ? 'darkgrey' : 'black' }}
       >
-        <input type="checkbox" onClick={() => toggleItem(item)} />
+        <input
+          type="checkbox"
+          defaultChecked={item.done}
+          onClick={() => toggleItem(item)}
+        />
         {item.text}
       </label>
     </li>
