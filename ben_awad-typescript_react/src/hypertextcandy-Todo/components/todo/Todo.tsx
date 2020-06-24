@@ -3,6 +3,7 @@ import './Todo.css';
 import TodoList from './TodoList';
 import Input from './Input';
 import Filter from './Filter';
+import TodoTitle from './TodoTitle';
 
 const getKey = () => Math.random().toString(32).substring(2);
 
@@ -35,12 +36,7 @@ const Todo: React.FC = () => {
 
   return (
     <div className="panel">
-      <div className="panel-heading">
-        <span className="logo" role="img" aria-label="reactLogo">
-          ⚛️
-        </span>
-        React ToDo
-      </div>
+      <TodoTitle />
       <Input addItem={addItem} />
       <Filter handleFilterChange={handleFilterChange} filter={filter} />
       <TodoList items={items} toggleItem={toggleItem} filter={filter} />
