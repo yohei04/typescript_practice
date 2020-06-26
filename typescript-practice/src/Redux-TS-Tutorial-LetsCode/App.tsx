@@ -19,6 +19,14 @@ const App: React.FC = () => {
     <div className="App">
       <input type="text" onChange={handleChange} />
       <button onClick={handleSubmit}>Search</button>
+      {pokemonState.pokemon && (
+        <div>
+          <img src={pokemonState.pokemon.sprites.front_default} />
+          {pokemonState.pokemon.abilities.map(ability => {
+            return <p>{ability.ability.name}</p>
+          })}
+        </div>
+      )}
     </div>
   );
 };
