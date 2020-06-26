@@ -2,6 +2,12 @@ export const POKEMON_LOADING = 'POKEMON_LOADING';
 export const POKEMON_FAIL = 'POKEMON_FAIL';
 export const POKEMON_SUCCESS = 'POKEMON_SUCCESS';
 
+export type PokemonType = {
+  abilities: PokemonAbility[];
+  sprites: PokemonSprites;
+  stats: PokemonStat[];
+};
+
 export type PokemonAbility = {
   ability: {
     name: string;
@@ -30,11 +36,7 @@ export interface PokemonFail {
 
 export interface PokemonSuccess {
   type: typeof POKEMON_SUCCESS;
-  payload: {
-    abilities: PokemonAbility[];
-    sprites: PokemonSprites;
-    stats: PokemonStat[];
-  };
+  payload: PokemonType;
 }
 
 export type PokemonDispatchTypes =
