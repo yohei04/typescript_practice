@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './Redux-TS-Tutorial-LetsCode/App';
+import App from './Router-Redux-Tutorial-LetsCode/App';
 import { Provider } from 'react-redux';
-import store from './Redux-TS-Tutorial-LetsCode/Stores'
+import store from './Router-Redux-Tutorial-LetsCode/Store'
 
 ReactDOM.render(
   <Provider store={store}>
