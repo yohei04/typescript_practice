@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './Todo-htc/App'
-
+import App from './Redux-TS-Tutorial-LetsCode/App';
+import { Provider } from 'react-redux';
+import store from './Redux-TS-Tutorial-LetsCode/Stores'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
-
 
 // import { StoreProvider } from './Udemy/redux/store';
 // import { Router, RouteComponentProps } from '@reach/router';
