@@ -1,7 +1,8 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux';
+import pokemonListReducer from './pokemonListReducers';
 
-const RootReducer = combineReducers({
+const rootReducer = combineReducers({
+  pokemonList: pokemonListReducer
+});
 
-})
-
-export default RootReducer
+export default rootReducer;
