@@ -3,9 +3,13 @@ import {
   POKEMON_LIST_LOADING,
   POKEMON_LIST_SUCCESS,
   POKEMON_LIST_FAILURE,
+  PokemonDispatchTypes,
 } from './pokemonActionTypes';
+import { Dispatch } from 'react';
 
-export const GetPokemonList = (page: number) => async (dispatch: any) => {
+export const GetPokemonList = (page: number) => async (
+  dispatch: Dispatch<PokemonDispatchTypes>
+) => {
   try {
     dispatch({
       type: POKEMON_LIST_LOADING,

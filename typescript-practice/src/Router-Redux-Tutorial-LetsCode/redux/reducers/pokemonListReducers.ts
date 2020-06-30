@@ -16,7 +16,10 @@ const defaultState: DefaultState = {
   errorMsg: '',
 };
 
-const pokemonListReducer = (state = defaultState, action: any) => {
+const pokemonListReducer = (
+  state: DefaultState = defaultState,
+  action: any
+) => {
   switch (action.type) {
     case POKEMON_LIST_LOADING:
       return {
@@ -37,9 +40,8 @@ const pokemonListReducer = (state = defaultState, action: any) => {
         loading: false,
         errorMsg: 'unable to get pokemon',
       };
-
     default:
-      break;
+      return state;
   }
 };
 
