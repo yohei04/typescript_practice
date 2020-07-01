@@ -23,7 +23,7 @@ const PokemonList: React.FC = () => {
         <div className="list-wrapper">
           {pokemonList.data.map((el: any) => {
             return (
-              <div className='pokemon.item'>
+              <div className='pokemon-item'>
                 <p>{el.name}</p>
                 <Link to={`/pokemon/${el.name}`}>View</Link>
               </div>
