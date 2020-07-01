@@ -22,7 +22,7 @@ export const GetPokemonList = (page: number) => async (
     const offset = page * perPage - perPage;
 
     const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset${offset}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${perPage}&offset=${offset}`
     );
 
     dispatch({

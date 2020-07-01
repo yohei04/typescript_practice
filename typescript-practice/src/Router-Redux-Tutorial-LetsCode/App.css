@@ -68,7 +68,7 @@ nav a {
 .pagination {
   width: 500px;
   display: flex;
-  margin: auto;
+  margin: 2rem auto;
   list-style: none;
   justify-content: space-between;
   padding: 0;

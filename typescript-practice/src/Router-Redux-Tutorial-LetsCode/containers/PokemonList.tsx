@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Store';
 import _ from 'lodash';
 import { GetPokemonList } from '../redux/actions/pokemonActions';
 import { Link } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
-const PokemonList: React.FC = () => {
+const PokemonList: React.FC = (props: any) => {
+  const [search, setSearch] = useState('');
   const dispatch = useDispatch();
   const pokemonList = useSelector((state: RootState) => state.pokemonList);
 
@@ -18,12 +20,16 @@ const PokemonList: React.FC = () => {
   };
 
   const ShowData: any = () => {
+    if (pokemonList.loading) {
+      return <p>Loading...</p>;
+    }
+
     if (!_.isEmpty(pokemonList.data)) {
       return (
         <div className="list-wrapper">
           {pokemonList.data.map((el: any) => {
             return (
-              <div className='pokemon-item'>
+              <div className="pokemon-item">
                 <p>{el.name}</p>
                 <Link to={`/pokemon/${el.name}`}>View</Link>
               </div>
@@ -33,10 +39,6 @@ const PokemonList: React.FC = () => {
       );
     }
 
-    if (pokemonList.loading) {
-      return <p>Loading...</p>;
-    }
-
     if (pokemonList.errorMsg !== '') {
       return <p>{pokemonList.errorMsg}</p>;
     }
@@ -44,7 +46,27 @@ const PokemonList: React.FC = () => {
     return <p>unable to get data</p>;
   };
 
-  return <div>{ShowData()}</div>;
+  return (
+    <div>
+      <div className="search-wrapper">
+        <p>Search: </p>
+        <input type="text" onChange={(e) => setSearch(e.target.value)} />
+        <button onClick={() => props.history.push(`/pokemon/${search}`)}>
+          Search
+        </button>
+      </div>
+      {ShowData()}
+      {!_.isEmpty(pokemonList.data) && (
+        <ReactPaginate
+          pageCount={Math.ceil(pokemonList.count / 15)}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={1}
+          onPageChange={(data) => FetchData(data.selected + 1)}
+          containerClassName={'pagination'}
+        />
+      )}
+    </div>
+  );
 };
 
 export default PokemonList;
