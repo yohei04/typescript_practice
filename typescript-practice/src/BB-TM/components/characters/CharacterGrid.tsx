@@ -1,5 +1,6 @@
 import React from 'react';
 import { CharacterType } from '../../CharacterTypes';
+import CharacterItem from './CharacterItem';
 
 interface CharacterGridProps {
   items: CharacterType[];
@@ -12,7 +13,7 @@ const CharacterGrid: React.FC<CharacterGridProps> = ({ items, isLoading }) => {
   ) : (
     <span className="cards">
       {items.map((item) => (
-        <h1 key={item.char_id}>{item.name}</h1>
+        <CharacterItem key={item.char_id} item={item} />
       ))}
     </span>
   );
