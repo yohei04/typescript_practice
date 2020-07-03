@@ -3,9 +3,10 @@ import './App.css'
 import Header from './components/ui/Header'
 import axios from 'axios'
 import CharacterGrid from './components/characters/CharacterGrid'
+import { CharacterType } from './CharacterTypes';
 
 const App = () => {
-  const [items, setItems] = useState<any>([])
+  const [items, setItems] = useState<CharacterType[]>([]);
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
