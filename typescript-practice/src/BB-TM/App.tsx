@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/ui/Header'
-import { result } from 'lodash'
 import axios from 'axios'
+import CharacterGrid from './components/characters/CharacterGrid'
 
 const App = () => {
   const [items, setItems] = useState<any>([])
@@ -23,6 +23,7 @@ const App = () => {
   return (
     <div className='container'>
       <Header />
+      <CharacterGrid items={items} isLoading={isLoading} />
     </div>
   )
 }
