@@ -23,12 +23,13 @@ const App = () => {
       setIsLoading(false);
     };
     fetchItem();
-  }, []);
+  }, [query]);
+
 
   return (
     <div className="container">
       <Header />
-      <Search setQuery={setQuery} />
+      <Search getQuery={(q: string) => setQuery(q)} />
       <CharacterGrid items={items} isLoading={isLoading} />
     </div>
   );

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 
 interface SearchProps {
-  
+  getQuery: (q: string) => void
 }
 
-const Search: React.FC<SearchProps> = ({ setQuery }) => {
+const Search: React.FC<SearchProps> = ({ getQuery }) => {
   const [text, setText] = useState('');
 
+  const onChange = (q: string) => {
+    setText(q);
+    getQuery(q);
+  };
+
   return (
-    
-
-
     <section className="search">
       <form>
         <input
@@ -18,7 +20,7 @@ const Search: React.FC<SearchProps> = ({ setQuery }) => {
           className="form-control"
           placeholder="Search characters"
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
           autoFocus
         />
       </form>
