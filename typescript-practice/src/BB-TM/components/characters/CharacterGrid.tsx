@@ -1,6 +1,7 @@
 import React from 'react';
 import { CharacterType } from '../../CharacterTypes';
 import CharacterItem from './CharacterItem';
+import Spinner from '../ui/Spinner';
 
 interface CharacterGridProps {
   items: CharacterType[];
@@ -9,7 +10,7 @@ interface CharacterGridProps {
 
 const CharacterGrid: React.FC<CharacterGridProps> = ({ items, isLoading }) => {
   return isLoading ? (
-    <h1>Loading...</h1>
+    <Spinner />
   ) : (
     <span className="cards">
       {items.map((item) => (
