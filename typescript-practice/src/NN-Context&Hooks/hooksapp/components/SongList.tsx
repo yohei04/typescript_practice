@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import NewSongForm from './NewSongForm';
+import { AddSong } from '../types';
 
 interface SongListProps { }
 
@@ -15,8 +17,8 @@ const SongList: React.FC<SongListProps> = ({}) => {
     { title: 'this wild darkness', id: 3 },
   ]);
 
-  const addSong = () => {
-    setSongs([...songs, { title: 'newSong', id: uuidv4() }]);
+  const addSong: AddSong = (title) => {
+    setSongs([...songs, { title, id: uuidv4() }]);
   };
 
   return (
@@ -26,7 +28,7 @@ const SongList: React.FC<SongListProps> = ({}) => {
           <li key={song.id}>{song.title}</li>
         ))}
       </ul>
-      <button onClick={addSong}>Add a song</button>
+      <NewSongForm addSong={addSong} />
     </div>
   );
 };
