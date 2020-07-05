@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './NN-Context&Hooks/contextapp/App';
+import App from './NN-Context&Hooks/hooksapp/App';
 // import { Provider } from 'react-redux';
 // import Store from './Router-Redux-Tutorial-LetsCode/Store';
 // import { BrowserRouter } from 'react-router-dom';
