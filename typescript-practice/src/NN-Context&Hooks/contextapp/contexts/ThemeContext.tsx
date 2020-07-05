@@ -19,7 +19,7 @@ const ThemeContextProvider: React.FC = (props) => {
 
   return (
     <>
-      <ThemeContext.Provider value={themes}>
+      <ThemeContext.Provider value={(themes)}>
         {props.children}
       </ThemeContext.Provider>
     </>
